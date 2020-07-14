@@ -1,0 +1,33 @@
+{
+  "files": {
+    "main.css": "/nsw-corona-virus/static/css/main.89c7c0ea.chunk.css",
+    "main.js": "/nsw-corona-virus/static/js/main.3b3a7de0.chunk.js",
+    "main.js.map": "/nsw-corona-virus/static/js/main.3b3a7de0.chunk.js.map",
+    "runtime-main.js": "/nsw-corona-virus/static/js/runtime-main.f4ce363a.js",
+    "runtime-main.js.map": "/nsw-corona-virus/static/js/runtime-main.f4ce363a.js.map",
+    "static/css/2.7597f154.chunk.css": "/nsw-corona-virus/static/css/2.7597f154.chunk.css",
+    "static/js/2.68f684b7.chunk.js": "/nsw-corona-virus/static/js/2.68f684b7.chunk.js",
+    "static/js/2.68f684b7.chunk.js.map": "/nsw-corona-virus/static/js/2.68f684b7.chunk.js.map",
+    "static/js/3.4d7feac7.chunk.js": "/nsw-corona-virus/static/js/3.4d7feac7.chunk.js",
+    "static/js/3.4d7feac7.chunk.js.map": "/nsw-corona-virus/static/js/3.4d7feac7.chunk.js.map",
+    "static/js/4.09414aa8.chunk.js": "/nsw-corona-virus/static/js/4.09414aa8.chunk.js",
+    "static/js/4.09414aa8.chunk.js.map": "/nsw-corona-virus/static/js/4.09414aa8.chunk.js.map",
+    "static/js/5.fdced50f.chunk.js": "/nsw-corona-virus/static/js/5.fdced50f.chunk.js",
+    "static/js/5.fdced50f.chunk.js.map": "/nsw-corona-virus/static/js/5.fdced50f.chunk.js.map",
+    "static/js/6.c3b98d8a.chunk.js": "/nsw-corona-virus/static/js/6.c3b98d8a.chunk.js",
+    "static/js/6.c3b98d8a.chunk.js.map": "/nsw-corona-virus/static/js/6.c3b98d8a.chunk.js.map",
+    "index.html": "/nsw-corona-virus/index.html",
+    "precache-manifest.579169d97ee4b764a2b4a52c66684a2c.js": "/nsw-corona-virus/precache-manifest.579169d97ee4b764a2b4a52c66684a2c.js",
+    "service-worker.js": "/nsw-corona-virus/service-worker.js",
+    "static/css/2.7597f154.chunk.css.map": "/nsw-corona-virus/static/css/2.7597f154.chunk.css.map",
+    "static/css/main.89c7c0ea.chunk.css.map": "/nsw-corona-virus/static/css/main.89c7c0ea.chunk.css.map",
+    "static/js/2.68f684b7.chunk.js.LICENSE.txt": "/nsw-corona-virus/static/js/2.68f684b7.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.f4ce363a.js",
+    "static/css/2.7597f154.chunk.css",
+    "static/js/2.68f684b7.chunk.js",
+    "static/css/main.89c7c0ea.chunk.css",
+    "static/js/main.3b3a7de0.chunk.js"
+  ]
+}
