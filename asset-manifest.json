@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/nsw-corona-virus/static/css/main.5e52791f.chunk.css",
-    "main.js": "/nsw-corona-virus/static/js/main.2a1601a6.chunk.js",
-    "main.js.map": "/nsw-corona-virus/static/js/main.2a1601a6.chunk.js.map",
+    "main.js": "/nsw-corona-virus/static/js/main.9fc679c2.chunk.js",
+    "main.js.map": "/nsw-corona-virus/static/js/main.9fc679c2.chunk.js.map",
     "runtime-main.js": "/nsw-corona-virus/static/js/runtime-main.39f5bc42.js",
     "runtime-main.js.map": "/nsw-corona-virus/static/js/runtime-main.39f5bc42.js.map",
     "static/css/2.7597f154.chunk.css": "/nsw-corona-virus/static/css/2.7597f154.chunk.css",
     "static/js/2.654b6c45.chunk.js": "/nsw-corona-virus/static/js/2.654b6c45.chunk.js",
     "static/js/2.654b6c45.chunk.js.map": "/nsw-corona-virus/static/js/2.654b6c45.chunk.js.map",
     "index.html": "/nsw-corona-virus/index.html",
-    "precache-manifest.43241a2c9a2e9d111874a35f467b11fc.js": "/nsw-corona-virus/precache-manifest.43241a2c9a2e9d111874a35f467b11fc.js",
+    "precache-manifest.4214f120f116b8795ee3ce1fd7a51fdf.js": "/nsw-corona-virus/precache-manifest.4214f120f116b8795ee3ce1fd7a51fdf.js",
     "service-worker.js": "/nsw-corona-virus/service-worker.js",
     "static/css/2.7597f154.chunk.css.map": "/nsw-corona-virus/static/css/2.7597f154.chunk.css.map",
     "static/css/main.5e52791f.chunk.css.map": "/nsw-corona-virus/static/css/main.5e52791f.chunk.css.map",
@@ -20,6 +20,6 @@
     "static/css/2.7597f154.chunk.css",
     "static/js/2.654b6c45.chunk.js",
     "static/css/main.5e52791f.chunk.css",
-    "static/js/main.2a1601a6.chunk.js"
+    "static/js/main.9fc679c2.chunk.js"
   ]
 }
