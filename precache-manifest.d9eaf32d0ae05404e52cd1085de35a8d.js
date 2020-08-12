@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "e8dcd364075fc42b02396950dc205708",
+    "revision": "fac9ef374a69fe339ff73d4e692c492e",
     "url": "/nsw-corona-virus/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/nsw-corona-virus/static/css/2.7597f154.chunk.css"
   },
   {
-    "revision": "f5b4d03b6d0434066882",
+    "revision": "876db2e66606c82b367f",
     "url": "/nsw-corona-virus/static/css/main.fde67dcf.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/nsw-corona-virus/static/js/2.654b6c45.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "f5b4d03b6d0434066882",
-    "url": "/nsw-corona-virus/static/js/main.3955fa08.chunk.js"
+    "revision": "876db2e66606c82b367f",
+    "url": "/nsw-corona-virus/static/js/main.99298685.chunk.js"
   },
   {
     "revision": "3bbe4513c7b5413de14f",
