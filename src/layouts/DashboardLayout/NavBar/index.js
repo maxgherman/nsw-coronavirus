@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import {
   Box,
   Drawer,
-  Hidden,
   List,
   makeStyles
 } from '@material-ui/core';
@@ -31,25 +30,15 @@ const items = [
     title: 'Distribution'
   },
   {
-    href: '/corelation',
+    href: '/correlation',
     icon: ShuffleIcon,
-    title: 'Corelation'
+    title: 'Correlation'
   }
 ];
 
 const useStyles = makeStyles(() => ({
   mobileDrawer: {
     width: 256
-  },
-  desktopDrawer: {
-    width: 256,
-    top: 64,
-    height: 'calc(100% - 64px)'
-  },
-  avatar: {
-    cursor: 'pointer',
-    width: 64,
-    height: 64
   }
 }));
 
@@ -88,27 +77,15 @@ const NavBar = ({ onMobileClose, openMobile }) => {
 
   return (
     <>
-      <Hidden lgUp>
-        <Drawer
-          anchor="left"
-          classes={{ paper: classes.mobileDrawer }}
-          onClose={onMobileClose}
-          open={openMobile}
-          variant="temporary"
-        >
-          {content}
-        </Drawer>
-      </Hidden>
-      <Hidden mdDown>
-        <Drawer
-          anchor="left"
-          classes={{ paper: classes.desktopDrawer }}
-          open
-          variant="persistent"
-        >
-          {content}
-        </Drawer>
-      </Hidden>
+      <Drawer
+        anchor="left"
+        classes={{ paper: classes.mobileDrawer }}
+        onClose={onMobileClose}
+        open={openMobile}
+        variant="temporary"
+      >
+        {content}
+      </Drawer>
     </>
   );
 };

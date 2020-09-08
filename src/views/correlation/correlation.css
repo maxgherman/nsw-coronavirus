@@ -57,3 +57,9 @@
 .corelation .tests-active { grid-area: 6 / 4 / 7 / 5; }
 .corelation .tests-recovered { grid-area: 6 / 5 / 7 / 6; }
 .corelation .tests-tests { grid-area: 6 / 6 / 7 / 7; }
+
+.corelation .number-box {
+    display: block;
+    line-height: 100px;
+    font-size: 24px;
+}

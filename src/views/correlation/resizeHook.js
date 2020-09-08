@@ -2,22 +2,10 @@ import {
   useState, useCallback, useEffect
 } from 'react';
 
-const calculateWidth = () => {
-  if (window.innerWidth < 1200) {
-    return window.innerWidth;
-  }
-
-  if (window.innerWidth < 1600) {
-    return window.innerWidth - 300;
-  }
-
-  return window.innerWidth - 400;
-};
-
 export const useResize = (borderWidth = 50) => {
-  const [width, setWidth] = useState(calculateWidth() - borderWidth);
+  const [width, setWidth] = useState(window.innerWidth - borderWidth);
   const resizeListener = useCallback(
-    () => setWidth(calculateWidth() - borderWidth), [borderWidth]
+    () => setWidth(window.innerWidth - borderWidth), [borderWidth]
   );
 
   useEffect(() => {
