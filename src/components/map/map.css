@@ -1,0 +1,12 @@
+.map .geocoder {
+    float: right;
+}
+
+.map .mapboxgl-ctrl-geocoder {
+    width: 500px;
+    font-size: 20px;
+}
+
+.map .mapboxgl-ctrl-geocoder--suggestion {
+    font-size: 15px;
+}
