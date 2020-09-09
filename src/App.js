@@ -14,9 +14,7 @@ const App = () => {
     <ThemeProvider theme={theme}>
       <GlobalStyles />
       <DataProvider>
-        <DataConsumer>
-          {(data) => (data.loaded ? routing : null)}
-        </DataConsumer>
+        <DataConsumer>{(data) => (data.loaded ? routing : null)}</DataConsumer>
       </DataProvider>
     </ThemeProvider>
   );

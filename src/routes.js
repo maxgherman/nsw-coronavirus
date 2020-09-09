@@ -17,7 +17,7 @@ const routes = [
       { path: 'totals', element: <Totals /> },
       { path: 'distribution', element: <Distribution /> },
       { path: 'correlation', element: <Correlation /> },
-      { path: 'regression', element: <Regression /> },
+      { path: 'regression', element: <Regression /> }
     ]
   }
 ];
