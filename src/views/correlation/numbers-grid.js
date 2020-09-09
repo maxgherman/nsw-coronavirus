@@ -4,15 +4,15 @@ import PropTypes from 'prop-types';
 import { Grid } from './grid';
 
 const Cell = ({ data, selector }) => {
-  const value = useMemo(() => {
-    const dataSlice = selector(data);
+  const dataSlice = selector(data);
 
+  const value = useMemo(() => {
     return sampleCorrelation(
       dataSlice.map((item) => item.x),
       dataSlice.map((item) => item.y)
     )
       .toFixed(5);
-  });
+  }, [dataSlice]);
 
   if (isNaN(value)) {
     return null;

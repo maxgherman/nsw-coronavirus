@@ -14,7 +14,18 @@ import { DateSlider } from 'src/components/date-slider';
 import { Selector } from 'src/components/selector';
 
 const useStyles = makeStyles(() => ({
-  root: {}
+  root: {},
+  sliderDate: {
+    minWidth: '100px',
+    paddingLeft: '20px',
+  },
+  slider: {
+    paddingRight: '20px',
+    width: '100%'
+  },
+  selector: {
+    paddingLeft: '30px'
+  }
 }));
 
 const useContentStyles = makeStyles(() => ({
@@ -38,12 +49,14 @@ const MapDetails = ({ className, ...rest }) => {
         display="flex"
         p={1}
       >
-        <div style={{ minWidth: '70px' }}>
+        <div className={classes.sliderDate}>
           <Typography>
             {dateValue}
           </Typography>
         </div>
-        <DateSlider dateChanged={setDateValue} />
+        <div className={classes.slider}>
+          <DateSlider dateChanged={setDateValue} />
+        </div>
       </Box>
       <Divider />
       <CardContent classes={{ root: contentClasses.root }}>
@@ -57,7 +70,7 @@ const MapDetails = ({ className, ...rest }) => {
       <Box
         display="flex"
         justifyContent="flex-start"
-        css={{ paddingLeft: '30px' }}
+        className={classes.selector}
       >
         <Selector data={selectorData} selectionChanged={setMapStyle} />
       </Box>

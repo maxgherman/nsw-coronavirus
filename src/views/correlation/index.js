@@ -23,6 +23,9 @@ const useStyles = makeStyles((theme) => ({
   },
   header: {
     width: '97%'
+  },
+  slider: {
+    paddingLeft: '30px'
   }
 }));
 
@@ -221,7 +224,14 @@ const Correlation = () => {
               {date}
             </Typography>
           </Box>
-          <DateSlider dateChanged={setDate} />
+          <Box
+            display="flex"
+            justifyContent="center"
+            className={classes.slider}
+          >
+            <DateSlider dateChanged={setDate} />
+          </Box>
+
         </Grid>
         <Grid
           item

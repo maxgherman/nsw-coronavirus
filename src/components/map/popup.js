@@ -108,7 +108,7 @@ export const Popup = ({
 Popup.propTypes = {
   latitude: PropTypes.number.isRequired,
   longitude: PropTypes.number.isRequired,
-  suburb: PropTypes.number.isRequired,
+  suburb: PropTypes.string.isRequired,
   total: PropTypes.number.isRequired,
   active: PropTypes.number.isRequired,
   recovered: PropTypes.number.isRequired,

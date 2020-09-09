@@ -11,6 +11,7 @@ import MultilineChartIcon from '@material-ui/icons/MultilineChart';
 import DashboardIcon from '@material-ui/icons/Dashboard';
 import EqualizerIcon from '@material-ui/icons/Equalizer';
 import ShuffleIcon from '@material-ui/icons/Shuffle';
+import BlurOffIcon from '@material-ui/icons/BlurOff';
 import NavItem from './NavItem';
 
 const items = [
@@ -33,6 +34,11 @@ const items = [
     href: '/correlation',
     icon: ShuffleIcon,
     title: 'Correlation'
+  },
+  {
+    href: '/regression',
+    icon: BlurOffIcon,
+    title: 'Regression'
   }
 ];
 

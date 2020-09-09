@@ -95,6 +95,7 @@ const TotalProfit = ({ className, ...rest }) => {
             {progressTests.toFixed(5)}
             %
           </Typography>
+          &nbsp;&nbsp;
           <Typography
             color="textSecondary"
             variant="caption"

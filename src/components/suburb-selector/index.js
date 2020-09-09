@@ -41,7 +41,7 @@ const SuburbSelect = ({ onChange }) => {
       className={classes.root}
       options={suburbs}
       getOptionLabel={(option) => `${option.postCode} ${option.name}`}
-      renderInput={(params) => <TextField {...params} label="Suburb" variant="outlined" />}
+      renderInput={(params) => <TextField {...params} label="Post code / Suburb" variant="outlined" />}
       renderOption={(option) => renderOption(option, classes)}
       onChange={(_, value) => onChange(value)}
     />
