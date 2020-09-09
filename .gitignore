@@ -11,6 +11,9 @@
 # production
 /build
 
+/data/*
+!/data/.gitkeep
+
 # misc
 .DS_Store
 /.env

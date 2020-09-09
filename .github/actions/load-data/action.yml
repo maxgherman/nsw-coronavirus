@@ -1,0 +1,5 @@
+name: Load Data
+description: Load data from `data` branch
+runs:
+  using: node12
+  main: ../../../scripts/load-data-ci.js

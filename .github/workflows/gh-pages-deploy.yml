@@ -1,0 +1,46 @@
+name: GH_PAGES Deploy
+
+on:
+  push:
+    branches: [ master ]
+
+  schedule:
+    - cron:  '0 08,23 * * *'
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [14.x]
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+
+    - name: Install
+      run: npm ci
+
+    - name: Build
+      run: npm run build --if-present
+      env:
+        REACT_APP_MAP_TOKEN: ${{ secrets.MAPBOX_KEY }}
+
+    - uses: ./.github/actions/load-data
+
+    - name: Deploy
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        deploy_key: ${{ secrets.GH_PAGES_DEPLOY_KEY }}
+        publish_dir: ./build
+        publish_branch: gh-pages
+
+
+
+
+
