@@ -57,7 +57,6 @@ const TotalCustomers = ({ className, ...rest }) => {
     };
   }, [cases, dates]);
 
-
   return (
     <Card
       className={clsx(classes.root, className)}

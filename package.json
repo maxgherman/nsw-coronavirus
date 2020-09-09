@@ -6,6 +6,9 @@
   "private": false,
   "scripts": {
     "start": "react-scripts start",
+    "lint": "eslint src",
+    "lint:fix": "npm run lint -- --fix",
+    "format": "prettier --write ./src",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
