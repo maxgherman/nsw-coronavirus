@@ -16,27 +16,27 @@ import NavItem from './NavItem';
 
 const items = [
   {
-    href: '/',
+    href: process.env.PUBLIC_URL,
     icon: DashboardIcon,
     title: 'Dashboard'
   },
   {
-    href: '/totals',
+    href: `${process.env.PUBLIC_URL}/totals`,
     icon: MultilineChartIcon,
     title: 'Cumulative Totals'
   },
   {
-    href: '/distribution',
+    href: `${process.env.PUBLIC_URL}/distribution`,
     icon: EqualizerIcon,
     title: 'Distribution'
   },
   {
-    href: '/correlation',
+    href: `${process.env.PUBLIC_URL}/correlation`,
     icon: ShuffleIcon,
     title: 'Correlation'
   },
   {
-    href: '/regression',
+    href: `${process.env.PUBLIC_URL}/regression`,
     icon: BlurOffIcon,
     title: 'Regression'
   }
