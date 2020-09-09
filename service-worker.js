@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/nsw-corona-virus/precache-manifest.82bac96b2b36e1da049d39bffd212d19.js"
+  "/nsw-corona-virus/precache-manifest.d7a4a5be36afdde703f435bd0831bfbf.js"
 );
 
 self.addEventListener('message', (event) => {
