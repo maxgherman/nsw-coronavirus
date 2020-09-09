@@ -7,7 +7,7 @@ import theme from 'src/theme';
 import routes from 'src/routes';
 
 const App = () => {
-  const routing = useRoutes(routes);
+  const routing = useRoutes(routes, process.env.PUBLIC_URL);
 
   return (
     <ThemeProvider theme={theme}>
