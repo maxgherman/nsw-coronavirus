@@ -45,7 +45,6 @@
     "react-helmet": "^6.1.0",
     "react-map-gl": "^5.2.8",
     "react-map-gl-geocoder": "^2.1.2",
-    "react-perfect-scrollbar": "^1.5.8",
     "react-router": "^6.0.0-beta.0",
     "react-router-dom": "^6.0.0-beta.0",
     "react-scripts": "^3.4.3",
