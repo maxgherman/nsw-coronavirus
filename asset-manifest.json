@@ -1,24 +1,24 @@
 {
   "files": {
-    "main.css": "/static/css/main.60381171.chunk.css",
-    "main.js": "/static/js/main.5403431f.chunk.js",
-    "main.js.map": "/static/js/main.5403431f.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.b32ccf71.js",
-    "runtime-main.js.map": "/static/js/runtime-main.b32ccf71.js.map",
-    "static/css/2.1b78fa86.chunk.css": "/static/css/2.1b78fa86.chunk.css",
-    "static/js/2.d2541679.chunk.js": "/static/js/2.d2541679.chunk.js",
-    "static/js/2.d2541679.chunk.js.map": "/static/js/2.d2541679.chunk.js.map",
-    "index.html": "/index.html",
-    "precache-manifest.31d3249e44b47adc7b2708f9fbdf5d1e.js": "/precache-manifest.31d3249e44b47adc7b2708f9fbdf5d1e.js",
-    "service-worker.js": "/service-worker.js",
-    "static/css/2.1b78fa86.chunk.css.map": "/static/css/2.1b78fa86.chunk.css.map",
-    "static/css/main.60381171.chunk.css.map": "/static/css/main.60381171.chunk.css.map",
-    "static/js/2.d2541679.chunk.js.LICENSE.txt": "/static/js/2.d2541679.chunk.js.LICENSE.txt"
+    "main.css": "/nsw-corona-virus/static/css/main.60381171.chunk.css",
+    "main.js": "/nsw-corona-virus/static/js/main.5403431f.chunk.js",
+    "main.js.map": "/nsw-corona-virus/static/js/main.5403431f.chunk.js.map",
+    "runtime-main.js": "/nsw-corona-virus/static/js/runtime-main.8c835686.js",
+    "runtime-main.js.map": "/nsw-corona-virus/static/js/runtime-main.8c835686.js.map",
+    "static/css/2.1b78fa86.chunk.css": "/nsw-corona-virus/static/css/2.1b78fa86.chunk.css",
+    "static/js/2.f7693366.chunk.js": "/nsw-corona-virus/static/js/2.f7693366.chunk.js",
+    "static/js/2.f7693366.chunk.js.map": "/nsw-corona-virus/static/js/2.f7693366.chunk.js.map",
+    "index.html": "/nsw-corona-virus/index.html",
+    "precache-manifest.a59026b3891eb6885e76720c1e64d3f9.js": "/nsw-corona-virus/precache-manifest.a59026b3891eb6885e76720c1e64d3f9.js",
+    "service-worker.js": "/nsw-corona-virus/service-worker.js",
+    "static/css/2.1b78fa86.chunk.css.map": "/nsw-corona-virus/static/css/2.1b78fa86.chunk.css.map",
+    "static/css/main.60381171.chunk.css.map": "/nsw-corona-virus/static/css/main.60381171.chunk.css.map",
+    "static/js/2.f7693366.chunk.js.LICENSE.txt": "/nsw-corona-virus/static/js/2.f7693366.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.b32ccf71.js",
+    "static/js/runtime-main.8c835686.js",
     "static/css/2.1b78fa86.chunk.css",
-    "static/js/2.d2541679.chunk.js",
+    "static/js/2.f7693366.chunk.js",
     "static/css/main.60381171.chunk.css",
     "static/js/main.5403431f.chunk.js"
   ]
