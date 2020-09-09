@@ -1,5 +1,5 @@
 {
-  "name": "react-material-dashboard",
+  "name": "nsw-corona-virus",
   "author": "Max Gherman",
   "licence": "MIT",
   "version": "1.0.0",
@@ -38,7 +38,6 @@
     "compute-histogram": "^0.9.7",
     "formik": "^2.1.5",
     "history": "^5.0.0",
-    "lodash": "^4.17.19",
     "mapbox-gl": "^1.11.1",
     "moment": "^2.27.0",
     "nprogress": "^0.2.0",
