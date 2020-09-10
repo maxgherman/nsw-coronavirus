@@ -6,12 +6,19 @@ import {
   Box,
   IconButton,
   Toolbar,
-  makeStyles
+  makeStyles,
+  Typography
 } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 
 const useStyles = makeStyles(() => ({
-  root: {}
+  root: {},
+  title: {
+    paddingLeft: '20px'
+  },
+  subTitle: {
+    fontSize: '15px'
+  }
 }));
 
 const TopBar = ({
@@ -34,7 +41,21 @@ const TopBar = ({
         >
           <MenuIcon />
         </IconButton>
-        <Box flexGrow={1} />
+        <Box className={classes.title}>
+          <Typography
+            gutterBottom
+            variant="h5"
+          >
+            NSW Australia coronavirus spread analysis
+          </Typography>
+          <Typography
+            gutterBottom
+            variant="inherit"
+            className={classes.subTitle}
+          >
+            The information presented is for demonstration purposes only
+          </Typography>
+        </Box>
       </Toolbar>
     </AppBar>
   );
