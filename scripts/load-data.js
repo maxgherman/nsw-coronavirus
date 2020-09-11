@@ -3,6 +3,8 @@ const fs = require('fs');
 const path = require('path');
 const util = require('util');
 
+const baseDataURL = 'https://nswdac-covid-19-postcode-heatmap.azurewebsites.net/datafiles';
+const baseDataStoreURL = 'https://raw.githubusercontent.com/maxgherman/nsw-coronavirus/gh-pages';
 const dateTimeFormat = new Intl.DateTimeFormat('en', { month: 'short', day: '2-digit' });
 
 const daysMap = [...new Array(14).keys()]
@@ -108,7 +110,7 @@ const mergeCases = async (casesUrl, baseCasesUrl, activeCasesUrl) => {
     const aDate = new Date(`${a[0]}-2020`);
     const bDate = new Date(`${b[0]}-2020`);
 
-    return aDate > bDate ? 1 : aDate < bDate ? -1 : 0;
+    return aDate > bDate ? 1 : (aDate < bDate ? -1 : 0);
   });
 
   const result = {
@@ -123,8 +125,8 @@ const mergeCases = async (casesUrl, baseCasesUrl, activeCasesUrl) => {
 };
 
 const run = async (baseDir) => {
-  const population = await download('https://nswdac-covid-19-postcode-heatmap.azurewebsites.net/datafiles/population.json');
-  const postCodes = await download('https://nswdac-covid-19-postcode-heatmap.azurewebsites.net/datafiles/nswpostcodes_final.json');
+  const population = await download(`${baseDataURL}/population.json`);
+  const postCodes = await download(`${baseDataURL}/nswpostcodes_final.json`);
 
   await writeFile(path.resolve(baseDir, 'build/population.json'), population);
   await writeFile(path.resolve(baseDir, 'build/post-codes.json'), postCodes);
@@ -132,9 +134,9 @@ const run = async (baseDir) => {
   console.log('complete writing base files');
 
   const cases = await mergeCases(
-    'https://nswdac-covid-19-postcode-heatmap.azurewebsites.net/datafiles/data_cases2.json',
-    'https://raw.githubusercontent.com/maxgherman/nsw-coronavirus/gh-pages/cases-total.json',
-    'https://nswdac-covid-19-postcode-heatmap.azurewebsites.net/datafiles/active_cases.json'
+    `${baseDataURL}/data_cases2.json`,
+    `${baseDataStoreURL}/cases-total.json`,
+    `${baseDataURL}/active_cases.json`
   );
 
   await writeFile(
@@ -143,8 +145,8 @@ const run = async (baseDir) => {
   );
 
   const resultTests = await mergeTests(
-    'https://nswdac-covid-19-postcode-heatmap.azurewebsites.net/datafiles/data_tests.json',
-    'https://raw.githubusercontent.com/maxgherman/nsw-coronavirus/gh-pages/tests-total.json',
+    `${baseDataURL}/data_tests.json`,
+    `${baseDataStoreURL}/tests-total.json`,
   );
 
   await writeFile(
