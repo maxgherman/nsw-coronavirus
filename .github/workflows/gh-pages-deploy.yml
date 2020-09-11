@@ -6,6 +6,8 @@ on:
 
   schedule:
     - cron:  '0 08,23 * * *'
+    
+  workflow_dispatch:
 
 jobs:
   build:
