@@ -7,14 +7,18 @@ import {
   IconButton,
   Toolbar,
   makeStyles,
-  Typography
+  Typography,
+  Link,
 } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
+import GitHubIcon from '@material-ui/icons/GitHub';
+import { config } from 'src/utils/config';
 
 const useStyles = makeStyles(() => ({
   root: {},
   title: {
-    paddingLeft: '20px'
+    paddingLeft: '20px',
+    minWidth: '50%'
   },
   subTitle: {
     fontSize: '15px'
@@ -55,6 +59,15 @@ const TopBar = ({
           >
             The information presented is for demonstration purposes only
           </Typography>
+        </Box>
+        <Box style={{ width: '100%', textAlign: 'end' }}>
+          <Link
+            href={config.source.baseUrl}
+            target="_blank"
+            rel="noopener"
+          >
+            <GitHubIcon style={{ color: '#ffff' }} />
+          </Link>
         </Box>
       </Toolbar>
     </AppBar>

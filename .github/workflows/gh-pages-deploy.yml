@@ -30,6 +30,8 @@ jobs:
       run: npm run build --if-present
       env:
         REACT_APP_MAP_TOKEN: ${{ secrets.MAPBOX_KEY }}
+        REACT_APP_DATA_URL: https://raw.githubusercontent.com/maxgherman/nsw-coronavirus/gh-pages
+        REACT_APP_GITHUB_URL: https://github.com/maxgherman/nsw-coronavirus
 
     - uses: ./.github/actions/load-data
 

@@ -1,3 +1,3 @@
-const { execute } = require('./load-data')
+const { execute } = require('./load-data');
 
-execute('.')
+execute('.');

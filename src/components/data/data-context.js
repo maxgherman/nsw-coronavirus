@@ -2,21 +2,24 @@ import React, {
   createContext, useEffect, useState
 } from 'react';
 import PropTypes from 'prop-types';
+import { config } from 'src/utils/config';
 import { mergeData } from './merge';
 
 export const DataContext = createContext({});
 export const DataConsumer = DataContext.Consumer;
 const ContextProvider = DataContext.Provider;
 
+const { baseUrl } = config.data;
+
 const getResource = (url) => fetch(url)
   .then((response) => response.json())
   .then((data) => { console.log(data); return data; });
 
 const importData = async () => {
-  const postCodes = await getResource('https://raw.githubusercontent.com/maxgherman/nsw-corona-virus/gh-pages/post-codes.json');
-  const cases = await getResource('https://raw.githubusercontent.com/maxgherman/nsw-corona-virus/gh-pages/cases-total.json');
-  const population = await getResource('https://raw.githubusercontent.com/maxgherman/nsw-corona-virus/gh-pages/population.json');
-  const tests = await getResource('https://raw.githubusercontent.com/maxgherman/nsw-corona-virus/gh-pages/tests-total.json');
+  const postCodes = await getResource(`${baseUrl}/post-codes.json`);
+  const cases = await getResource(`${baseUrl}/cases-total.json`);
+  const population = await getResource(`${baseUrl}/population.json`);
+  const tests = await getResource(`${baseUrl}/tests-total.json`);
 
   return {
     postCodes, cases, population, tests

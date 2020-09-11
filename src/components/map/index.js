@@ -8,7 +8,7 @@ import React, {
 import MapGL from 'react-map-gl';
 import PropTypes from 'prop-types';
 import { bagKeys, DataContext } from 'src/components/data';
-import { token } from 'src/utils/map';
+import { config } from 'src/utils/config';
 import { source, layers, swap } from './layers';
 import { GeoCoder } from './geo-coder';
 import { usePopup, Popup } from './popup';
@@ -87,14 +87,14 @@ export const Map = ({ date, mapStyle }) => {
         height="60vh"
         mapStyle="mapbox://styles/mapbox/streets-v10"
         onViewportChange={(nextViewport) => setViewport(nextViewport)}
-        mapboxApiAccessToken={token}
+        mapboxApiAccessToken={config.map.token}
         onClick={handleClick}
       >
         <GeoCoder
           mapRef={mapRef}
           containerRef={geoCoderRef}
           onViewportChange={handleGeocoderViewportChange}
-          token={token}
+          token={config.map.token}
         />
         {source(postCodesGeometry, date)}
         {popup.show && <Popup {...popup} />}
