@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import {
@@ -13,12 +14,16 @@ import {
 import MenuIcon from '@material-ui/icons/Menu';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import { config } from 'src/utils/config';
+import { links } from 'src/utils/navigation-urls';
 
 const useStyles = makeStyles(() => ({
   root: {},
   title: {
     paddingLeft: '20px',
-    minWidth: '50%'
+    minWidth: '50%',
+    '& *': {
+      color: 'inherit'
+    }
   },
   subTitle: {
     fontSize: '15px'
@@ -46,19 +51,23 @@ const TopBar = ({
           <MenuIcon />
         </IconButton>
         <Box className={classes.title}>
-          <Typography
-            gutterBottom
-            variant="h5"
+          <NavLink
+            to={links.dashboard.absolute}
           >
-            NSW Australia coronavirus spread analysis
-          </Typography>
-          <Typography
-            gutterBottom
-            variant="inherit"
-            className={classes.subTitle}
-          >
-            The information presented is for demonstration purposes only
-          </Typography>
+            <Typography
+              gutterBottom
+              variant="h5"
+            >
+              NSW Australia coronavirus spread analysis
+            </Typography>
+            <Typography
+              gutterBottom
+              variant="inherit"
+              className={classes.subTitle}
+            >
+              The information presented is for demonstration purposes only
+            </Typography>
+          </NavLink>
         </Box>
         <Box style={{ width: '100%', textAlign: 'end' }}>
           <Link

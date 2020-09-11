@@ -12,31 +12,32 @@ import DashboardIcon from '@material-ui/icons/Dashboard';
 import EqualizerIcon from '@material-ui/icons/Equalizer';
 import ShuffleIcon from '@material-ui/icons/Shuffle';
 import BlurOffIcon from '@material-ui/icons/BlurOff';
+import { links } from 'src/utils/navigation-urls';
 import NavItem from './NavItem';
 
 const items = [
   {
-    href: process.env.PUBLIC_URL,
+    href: links.dashboard.absolute,
     icon: DashboardIcon,
     title: 'Dashboard'
   },
   {
-    href: `${process.env.PUBLIC_URL}/totals`,
+    href: links.totals.absolute,
     icon: MultilineChartIcon,
     title: 'Cumulative Totals'
   },
   {
-    href: `${process.env.PUBLIC_URL}/distribution`,
+    href: links.distribution.absolute,
     icon: EqualizerIcon,
     title: 'Distribution'
   },
   {
-    href: `${process.env.PUBLIC_URL}/correlation`,
+    href: links.correlation.absolute,
     icon: ShuffleIcon,
     title: 'Correlation'
   },
   {
-    href: `${process.env.PUBLIC_URL}/regression`,
+    href: links.regression.absolute,
     icon: BlurOffIcon,
     title: 'Regression'
   }

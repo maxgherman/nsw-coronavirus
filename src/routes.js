@@ -6,6 +6,7 @@ import Totals from 'src/views/totals';
 import Distribution from 'src/views/distribution';
 import Correlation from 'src/views/correlation';
 import Regression from 'src/views/regression';
+import { links } from 'src/utils/navigation-urls';
 
 const routes = [
   {
@@ -13,11 +14,11 @@ const routes = [
     element: <DashboardLayout />,
     children: [
       { path: '/', element: <Navigate to="dashboard" /> },
-      { path: 'dashboard', element: <Dashboard /> },
-      { path: 'totals', element: <Totals /> },
-      { path: 'distribution', element: <Distribution /> },
-      { path: 'correlation', element: <Correlation /> },
-      { path: 'regression', element: <Regression /> }
+      { path: links.dashboard.path, element: <Dashboard /> },
+      { path: links.totals.path, element: <Totals /> },
+      { path: links.distribution.path, element: <Distribution /> },
+      { path: links.correlation.path, element: <Correlation /> },
+      { path: links.regression.path, element: <Regression /> }
     ]
   }
 ];

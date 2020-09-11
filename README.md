@@ -1,4 +1,4 @@
-# NSW Australia Corona virus spread analysis
+# NSW Australia coronavirus spread analysis
 
 ## Web application showing COVID spread statistics for NSW, Australia
 
