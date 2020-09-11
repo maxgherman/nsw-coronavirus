@@ -6,7 +6,7 @@ on:
 
   schedule:
     - cron:  '0 08,23 * * *'
-    
+
   workflow_dispatch:
 
 jobs:
@@ -43,6 +43,7 @@ jobs:
         deploy_key: ${{ secrets.GH_PAGES_DEPLOY_KEY }}
         publish_dir: ./build
         publish_branch: gh-pages
+        cname: nsw-coronavirus.js.org
 
 
 
