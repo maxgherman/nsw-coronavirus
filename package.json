@@ -56,13 +56,13 @@
     "eslint-plugin-react-hooks": "^4.1.0"
   },
   "licence": "MIT",
-  "homepage": "https://maxgherman.github.io/nsw-corona-virus/",
+  "homepage": "https://maxgherman.github.io/nsw-coronavirus/",
   "author": {
     "name": "Max Gherman",
     "email": "german.maxim@gmail.com"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/maxgherman/nsw-corona-virus.git"
+    "url": "https://github.com/maxgherman/nsw-coronavirus.git"
   }
 }
