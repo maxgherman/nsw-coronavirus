@@ -5,7 +5,7 @@ import './map.css';
 import React, {
   useState, useRef, useContext, useEffect
 } from 'react';
-import MapGL from 'react-map-gl';
+import MapGL, { NavigationControl } from 'react-map-gl';
 import PropTypes from 'prop-types';
 import { bagKeys, DataContext } from 'src/components/data';
 import { config } from 'src/utils/config';
@@ -42,7 +42,7 @@ const swapMapStyle = (map, mapStyle) => {
   setTimeout(() => { swapMapStyle(map, mapStyle, mapType); }, 200);
 };
 
-export const Map = ({ date, mapStyle }) => {
+export const Map = ({ date, mapStyle, height = '60hv' }) => {
   const { postCodesGeometry } = useContext(DataContext);
   const [viewport, setViewport] = useState({
     zoom: 6,
@@ -84,7 +84,7 @@ export const Map = ({ date, mapStyle }) => {
         ref={mapRef}
         {...viewport}
         width="100%"
-        height="60vh"
+        height={height}
         mapStyle="mapbox://styles/mapbox/streets-v10"
         onViewportChange={(nextViewport) => setViewport(nextViewport)}
         mapboxApiAccessToken={config.map.token}
@@ -98,6 +98,9 @@ export const Map = ({ date, mapStyle }) => {
         />
         {source(postCodesGeometry, date)}
         {popup.show && <Popup {...popup} />}
+        <div style={{ position: 'absolute' }}>
+          <NavigationControl />
+        </div>
       </MapGL>
     </div>
   );
@@ -105,5 +108,6 @@ export const Map = ({ date, mapStyle }) => {
 
 Map.propTypes = {
   date: PropTypes.string.isRequired,
-  mapStyle: PropTypes.string.isRequired
+  mapStyle: PropTypes.string.isRequired,
+  height: PropTypes.string
 };

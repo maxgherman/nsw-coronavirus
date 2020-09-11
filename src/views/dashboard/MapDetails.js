@@ -8,13 +8,15 @@ import {
   Divider,
   makeStyles,
   Typography,
+  IconButton
 } from '@material-ui/core';
+import FullscreenIcon from '@material-ui/icons/Fullscreen';
+import FullscreenExitIcon from '@material-ui/icons/FullscreenExit';
 import { Map, selectorData } from 'src/components/map';
 import { DateSlider } from 'src/components/date-slider';
 import { Selector } from 'src/components/selector';
 
 const useStyles = makeStyles(() => ({
-  root: {},
   sliderDate: {
     minWidth: '100px',
     paddingLeft: '20px',
@@ -25,24 +27,54 @@ const useStyles = makeStyles(() => ({
   },
   selector: {
     paddingLeft: '30px'
+  },
+  displayToggle: {
+    padding: 0
   }
 }));
 
 const useContentStyles = makeStyles(() => ({
-  root: {
+  contentRoot: {
     padding: 0
   }
 }));
+
+const fullScreenClick = (mapState, setMapState) => {
+  const element = document.getElementsByClassName('map-wrapper')[0];
+  if (!element) {
+    return;
+  }
+
+  if (!element.requestFullscreen) {
+    // eslint-disable-next-line no-alert
+    alert('Full screen mode is not supported by the browser');
+    return;
+  }
+
+  if (document.fullscreenElement && document.fullscreenElement === element) {
+    document.exitFullscreen()
+      .finally(() => { setMapState({ ...mapState, fullScreen: false }); });
+    return;
+  }
+
+  if (!document.fullscreenElement) {
+    element.requestFullscreen()
+      .finally(() => { setMapState({ ...mapState, fullScreen: true }); });
+  }
+};
 
 const MapDetails = ({ className, ...rest }) => {
   const classes = useStyles();
   const contentClasses = useContentStyles();
   const [dateValue, setDateValue] = useState('');
-  const [mapStyle, setMapStyle] = useState(selectorData[0].key);
+  const [mapState, setMapState] = useState({
+    type: selectorData[0].key,
+    fullScreen: false
+  });
 
   return (
     <Card
-      className={clsx(classes.root, className)}
+      className={clsx(classes.root, className, 'map-wrapper')}
       {...rest}
     >
       <Box
@@ -57,13 +89,28 @@ const MapDetails = ({ className, ...rest }) => {
         <div className={classes.slider}>
           <DateSlider dateChanged={setDateValue} />
         </div>
+        <div>
+          <IconButton
+            title="Full screen"
+            classes={{ root: classes.displayToggle }}
+            onClick={() => { fullScreenClick(mapState, setMapState); }}
+          >
+            {mapState.fullScreen
+              ? (<FullscreenExitIcon fontSize="large" />)
+              : (<FullscreenIcon fontSize="large" />)}
+          </IconButton>
+        </div>
       </Box>
       <Divider />
-      <CardContent classes={{ root: contentClasses.root }}>
+      <CardContent classes={{ root: contentClasses.contentRoot }}>
         <Box
           position="relative"
         >
-          <Map date={dateValue} mapStyle={mapStyle} />
+          <Map
+            date={dateValue}
+            mapStyle={mapState.type}
+            height={mapState.fullScreen ? '92vh' : '60vh'}
+          />
         </Box>
       </CardContent>
       <Divider />
@@ -72,7 +119,10 @@ const MapDetails = ({ className, ...rest }) => {
         justifyContent="flex-start"
         className={classes.selector}
       >
-        <Selector data={selectorData} selectionChanged={setMapStyle} />
+        <Selector
+          data={selectorData}
+          selectionChanged={(type) => { setMapState({ ...mapState, type }); }}
+        />
       </Box>
     </Card>
   );
