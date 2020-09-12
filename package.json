@@ -1,5 +1,5 @@
 {
-  "name": "nsw-corona-virus",
+  "name": "nsw-coronavirus",
   "version": "1.0.0",
   "private": false,
   "scripts": {
@@ -56,7 +56,7 @@
     "eslint-plugin-react-hooks": "^4.1.0"
   },
   "licence": "MIT",
-  "homepage": "https://maxgherman.github.io/nsw-coronavirus/",
+  "homepage": "https://nsw-coronavirus.js.org/",
   "author": {
     "name": "Max Gherman",
     "email": "german.maxim@gmail.com"
