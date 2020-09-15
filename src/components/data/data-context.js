@@ -12,8 +12,7 @@ const ContextProvider = DataContext.Provider;
 const { baseUrl } = config.data;
 
 const getResource = (url) => fetch(url)
-  .then((response) => response.json())
-  .then((data) => { console.log(data); return data; });
+  .then((response) => response.json());
 
 const importData = async () => {
   const postCodes = await getResource(`${baseUrl}/post-codes.json`);

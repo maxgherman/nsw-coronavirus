@@ -5,6 +5,7 @@ const util = require('util');
 
 const baseDataURL = 'https://nswdac-covid-19-postcode-heatmap.azurewebsites.net/datafiles';
 const baseDataStoreURL = 'https://raw.githubusercontent.com/maxgherman/nsw-coronavirus/gh-pages';
+const baseSaveDataFolder = 'public';
 const dateTimeFormat = new Intl.DateTimeFormat('en', { month: 'short', day: '2-digit' });
 
 const daysMap = [...new Array(14).keys()]
@@ -128,8 +129,8 @@ const run = async (baseDir) => {
   const population = await download(`${baseDataURL}/population.json`);
   const postCodes = await download(`${baseDataURL}/nswpostcodes_final.json`);
 
-  await writeFile(path.resolve(baseDir, 'build/population.json'), population);
-  await writeFile(path.resolve(baseDir, 'build/post-codes.json'), postCodes);
+  await writeFile(path.resolve(baseDir, `${baseSaveDataFolder}/population.json`), population);
+  await writeFile(path.resolve(baseDir, `${baseSaveDataFolder}/post-codes.json`), postCodes);
 
   console.log('complete writing base files');
 
@@ -140,7 +141,7 @@ const run = async (baseDir) => {
   );
 
   await writeFile(
-    path.resolve(baseDir, 'build/cases-total.json'),
+    path.resolve(baseDir, `${baseSaveDataFolder}/cases-total.json`),
     JSON.stringify(cases)
   );
 
@@ -150,7 +151,7 @@ const run = async (baseDir) => {
   );
 
   await writeFile(
-    path.resolve(baseDir, 'build/tests-total.json'),
+    path.resolve(baseDir, `${baseSaveDataFolder}/tests-total.json`),
     JSON.stringify(resultTests)
   );
 
