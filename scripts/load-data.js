@@ -3,10 +3,14 @@ const fs = require('fs');
 const path = require('path');
 const util = require('util');
 
+const writeFile = util.promisify(fs.writeFile);
+
 const baseDataURL = 'https://nswdac-covid-19-postcode-heatmap.azurewebsites.net/datafiles';
 const baseDataStoreURL = 'https://raw.githubusercontent.com/maxgherman/nsw-coronavirus/gh-pages';
 const baseSaveDataFolder = 'public';
-const dateTimeFormat = new Intl.DateTimeFormat('en', { month: 'short', day: '2-digit' });
+const dateTimeFormat = new Intl.DateTimeFormat('en', {
+  month: 'short', day: '2-digit', year: 'numeric'
+});
 
 const daysMap = [...new Array(14).keys()]
   .reduce((acc, curr) => {
@@ -15,12 +19,18 @@ const daysMap = [...new Array(14).keys()]
     const dateParts = dateTimeFormat.formatToParts(date);
     const day = dateParts.filter((item) => item.type === 'day')[0];
     const month = dateParts.filter((item) => item.type === 'month')[0];
+    const year = dateParts.filter((item) => item.type === 'year')[0];
 
-    acc.set(`Day${curr}`, `${day.value}-${month.value}`);
+    acc.set(`Day${curr}`, `${day.value}-${month.value}-${year.value}`);
     return acc;
   }, new Map());
 
-const writeFile = util.promisify(fs.writeFile);
+const sort = (a, b) => {
+  const aDate = new Date(a.Date);
+  const bDate = new Date(b.Date);
+
+  return aDate > bDate ? 1 : (aDate < bDate ? -1 : 0);
+};
 
 const download = (url) => new Promise((resolve, reject) => {
   let data = '';
@@ -41,9 +51,15 @@ const download = (url) => new Promise((resolve, reject) => {
 });
 
 const arrangeByDate = (data, store) => data.data.reduce((acc, curr) => {
-  const entry = acc.has(curr.Date) ? acc.get(curr.Date) : new Map();
+  const currentYear = new Date().getFullYear();
+  const date = curr.Date;
+
+  const parsedDate = /^[0-9]{2}-[a-z,A-Z]{3}$/.test(date) ? `${date}-${currentYear}` : curr.Date;
+  curr.Date = parsedDate;
+
+  const entry = acc.has(parsedDate) ? acc.get(parsedDate) : new Map();
   entry.set(curr.POA_NAME16, curr);
-  acc.set(curr.Date, entry);
+  acc.set(parsedDate, entry);
 
   return acc;
 }, store);
@@ -55,24 +71,15 @@ const mergeTests = async (testUrl, baseTestsUrl) => {
   const store = arrangeByDate(JSON.parse(baseTests), new Map());
   arrangeByDate(JSON.parse(tests), store);
 
-  const maps = [...store.entries()];
+  const maps = [...store.values()]
+    .map((item) => [...item.values()])
+    .flat();
 
-  maps.sort((a, b) => {
-    const aDate = new Date(`${a[0]}-2020`);
-    const bDate = new Date(`${b[0]}-2020`);
+  maps.sort(sort);
 
-    return aDate > bDate ? 1 : (aDate < bDate ? -1 : 0);
-  });
-
-  const result = {
-    data: []
+  return {
+    data: maps
   };
-
-  maps.forEach(([_, value]) => {
-    ([...value.values()]).forEach((item) => result.data.push(item));
-  });
-
-  return result;
 };
 
 const mergeCases = async (casesUrl, baseCasesUrl, activeCasesUrl) => {
@@ -105,24 +112,15 @@ const mergeCases = async (casesUrl, baseCasesUrl, activeCasesUrl) => {
     });
   });
 
-  const maps = [...mergedCases.entries()];
+  const maps = [...mergedCases.values()]
+    .map((item) => [...item.values()])
+    .flat();
 
-  maps.sort((a, b) => {
-    const aDate = new Date(`${a[0]}-2020`);
-    const bDate = new Date(`${b[0]}-2020`);
+  maps.sort(sort);
 
-    return aDate > bDate ? 1 : (aDate < bDate ? -1 : 0);
-  });
-
-  const result = {
-    data: []
+  return {
+    data: maps
   };
-
-  maps.forEach(([_, value]) => {
-    ([...value.values()]).forEach((item) => result.data.push(item));
-  });
-
-  return result;
 };
 
 const run = async (baseDir) => {

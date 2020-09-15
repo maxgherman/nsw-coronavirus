@@ -18,8 +18,8 @@ import { Selector } from 'src/components/selector';
 
 const useStyles = makeStyles(() => ({
   sliderDate: {
-    minWidth: '100px',
-    paddingLeft: '20px',
+    minWidth: '130px',
+    paddingLeft: '10px',
   },
   slider: {
     paddingRight: '20px',
