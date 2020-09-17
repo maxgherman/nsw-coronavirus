@@ -10,6 +10,7 @@ import {
   makeStyles,
   Typography,
   Link,
+  Hidden
 } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import GitHubIcon from '@material-ui/icons/GitHub';
@@ -60,13 +61,15 @@ const TopBar = ({
             >
               NSW Australia coronavirus spread analysis
             </Typography>
-            <Typography
-              gutterBottom
-              variant="inherit"
-              className={classes.subTitle}
-            >
-              The information presented is for demonstration purposes only
-            </Typography>
+            <Hidden xsDown>
+              <Typography
+                gutterBottom
+                variant="inherit"
+                className={classes.subTitle}
+              >
+                The information presented is for demonstration purposes only
+              </Typography>
+            </Hidden>
           </NavLink>
         </Box>
         <Box style={{ width: '100%', textAlign: 'end' }}>
