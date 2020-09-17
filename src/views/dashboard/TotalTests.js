@@ -89,7 +89,6 @@ const TotalProfit = ({ className, ...rest }) => {
         >
           <ArrowUpwardIcon className={classes.differenceIcon} />
           <Typography
-            className={classes.differenceValue}
             variant="body2"
           >
             {progressTests.toFixed(5)}

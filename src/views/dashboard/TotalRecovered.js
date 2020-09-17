@@ -15,7 +15,7 @@ import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
 import PeopleIcon from '@material-ui/icons/PeopleOutlined';
 import { DataContext } from 'src/components/data';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   root: {
     height: '100%'
   },
@@ -26,10 +26,6 @@ const useStyles = makeStyles((theme) => ({
   },
   differenceIcon: {
     color: colors.green[900]
-  },
-  differenceValue: {
-    color: colors.green[900],
-    marginRight: theme.spacing(1)
   }
 }));
 
@@ -96,12 +92,12 @@ const TotalCustomers = ({ className, ...rest }) => {
         >
           <ArrowUpwardIcon className={classes.differenceIcon} />
           <Typography
-            className={classes.differenceValue}
             variant="body2"
           >
             {progressRecovered.toFixed(5)}
             %
           </Typography>
+          &nbsp;&nbsp;
           <Typography
             color="textSecondary"
             variant="caption"

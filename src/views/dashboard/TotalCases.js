@@ -12,10 +12,11 @@ import {
   makeStyles
 } from '@material-ui/core';
 import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
+import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
 import ErrorOutlineIcon from '@material-ui/icons/ErrorOutline';
 import { DataContext } from 'src/components/data';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   root: {
     height: '100%'
   },
@@ -24,12 +25,11 @@ const useStyles = makeStyles((theme) => ({
     height: 56,
     width: 56
   },
-  differenceIcon: {
-    color: colors.green[900]
+  progressUpIcon: {
+    color: colors.red[900]
   },
-  differenceValue: {
-    color: colors.green[900],
-    marginRight: theme.spacing(1)
+  progressDownIcon: {
+    color: colors.green[900]
   }
 }));
 
@@ -94,14 +94,16 @@ const TotalCases = ({ className, ...rest }) => {
           display="flex"
           alignItems="center"
         >
-          <ArrowUpwardIcon className={classes.differenceIcon} />
+          {progressCases < 0
+            ? <ArrowDownwardIcon className={classes.progressDownIcon} />
+            : <ArrowUpwardIcon className={classes.progressUpIcon} />}
           <Typography
-            className={classes.differenceValue}
             variant="body2"
           >
             {progressCases.toFixed(5)}
             %
           </Typography>
+          &nbsp;&nbsp;
           <Typography
             color="textSecondary"
             variant="caption"

@@ -16,7 +16,7 @@ import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
 import ErrorOutlineIcon from '@material-ui/icons/ErrorOutline';
 import { DataContext } from 'src/components/data';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   root: {
     height: '100%'
   },
@@ -30,10 +30,6 @@ const useStyles = makeStyles((theme) => ({
   },
   progressDownIcon: {
     color: colors.green[900]
-  },
-  differenceValue: {
-    color: colors.green[900],
-    marginRight: theme.spacing(1)
   }
 }));
 
@@ -102,12 +98,12 @@ const TotalActive = ({ className, ...rest }) => {
             ? <ArrowDownwardIcon className={classes.progressDownIcon} />
             : <ArrowUpwardIcon className={classes.progressUpIcon} />}
           <Typography
-            className={classes.differenceValue}
             variant="body2"
           >
             {progressActive.toFixed(5)}
             %
           </Typography>
+          &nbsp;&nbsp;
           <Typography
             color="textSecondary"
             variant="caption"
