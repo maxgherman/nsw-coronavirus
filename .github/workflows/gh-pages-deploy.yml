@@ -25,6 +25,8 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
 
+    - uses: ./.github/actions/load-data
+
     - name: Install
       run: npm ci
 
@@ -34,8 +36,6 @@ jobs:
         REACT_APP_MAP_TOKEN: ${{ secrets.MAPBOX_KEY }}
         REACT_APP_DATA_URL: .
         REACT_APP_GITHUB_URL: https://github.com/maxgherman/nsw-coronavirus
-
-    - uses: ./.github/actions/load-data
 
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v3
