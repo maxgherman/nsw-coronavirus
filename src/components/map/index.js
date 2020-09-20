@@ -98,7 +98,7 @@ export const Map = ({ date, mapStyle, height = '60hv' }) => {
         />
         {source(postCodesGeometry, date)}
         {popup.show && <Popup {...popup} />}
-        <div style={{ position: 'absolute' }}>
+        <div className="navigation">
           <NavigationControl />
         </div>
       </MapGL>

@@ -2,8 +2,13 @@
     float: right;
 }
 
+.map .navigation {
+    position: absolute;
+    top: 50px;
+}
+
 .map .mapboxgl-ctrl-geocoder {
-    width: 500px;
+    width: 100%;
     font-size: 20px;
 }
 
