@@ -105,7 +105,7 @@ const mergeCases = async (casesUrl, baseCasesUrl, activeCasesUrl) => {
           if (casesByDate.has(activeCase.POA_NAME16)) {
             const caseItem = casesByDate.get(activeCase.POA_NAME16);
             const active = activeCase[activeCaseKey];
-            caseItem.Recovered = caseItem.Cases - active;
+            caseItem.Recovered = caseItem.Cases - (active + caseItem.Deaths);
           }
         }
       }
