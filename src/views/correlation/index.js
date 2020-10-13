@@ -186,7 +186,7 @@ const Correlation = () => {
   return (
     <Page
       className={classes.root}
-      title="Corelation"
+      title="Correlation"
     >
       <Grid
         container

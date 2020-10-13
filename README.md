@@ -26,7 +26,7 @@
 - Daily data split
 - Summary of the metrics: Cases, Active Cases, Recovered, Tests
 - Suburb data split
-- Corelation of cross-pairs of metrics: Cases, Active Cases, Recovered, Tests
+- Correlation of cross-pairs of metrics: Cases, Active Cases, Recovered, Tests
 - Linear regression of cross-pairs of metrics: Cases, Active Cases, Recovered, Tests
 
 ### Architecture
