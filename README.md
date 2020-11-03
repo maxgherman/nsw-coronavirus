@@ -41,6 +41,6 @@
 
 ### Tutorial
 
-![Statistical analysis pipeline](https://www.max-gherman.dev/docs/design/data-analysis/contents)
+[Statistical analysis pipeline](https://www.max-gherman.dev/docs/design/data-analysis/contents/)
 
 ![NSW Australis COVID spread](./nsw-statistics.png "NSW Australis COVID spread")
