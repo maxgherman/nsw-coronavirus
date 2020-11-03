@@ -31,10 +31,16 @@
 
 ### Architecture
 
-![Architecture](./architecture.png)
+![Architecture](./architecture.png "Architecture")
 
 - Github action is triggered by schedule
 - CI/CD agent downloads data from the 3dr party server
 - CI/CD agent builds static web site assets
 - CI/CD pushes downloaded data along with the build artifacts into the gh-pages branch
 - Client connects to Github static website hosting
+
+### Tutorial
+
+![Statistical analysis pipeline ](https://www.max-gherman.dev/docs/design/data-analysis/contents)
+
+![NSW Australis COVID spread](./nsw-statistics.png "NSW Australis COVID spread")
