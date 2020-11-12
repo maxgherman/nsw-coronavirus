@@ -7,8 +7,8 @@ import {
   Radio
 } from '@material-ui/core';
 
-export const Selector = ({ data, selectionChanged }) => {
-  const [selectedKey, setSelectedKey] = useState(data[0].key);
+export const Selector = ({ data, selectionChanged, selectedIndex }) => {
+  const [selectedKey, setSelectedKey] = useState(data[selectedIndex].key);
 
   return (
     <FormControl component="fieldset">
@@ -47,5 +47,6 @@ Selector.propTypes = {
     })
   ).isRequired,
 
-  selectionChanged: PropTypes.func
+  selectionChanged: PropTypes.func,
+  selectedIndex: PropTypes.number.isRequired
 };

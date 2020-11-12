@@ -241,7 +241,11 @@ const Correlation = () => {
           xs={12}
           style={{ paddingLeft: 50 }}
         >
-          <Selector data={selectorData} selectionChanged={setDisplayType} />
+          <Selector
+            data={selectorData}
+            selectionChanged={setDisplayType}
+            selectedIndex={0}
+          />
         </Grid>
       </Grid>
       {renderBody()}

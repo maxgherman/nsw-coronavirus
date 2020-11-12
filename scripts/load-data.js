@@ -2,6 +2,7 @@ const https = require('https');
 const fs = require('fs');
 const path = require('path');
 const util = require('util');
+const { StringDecoder } = require('string_decoder');
 
 const writeFile = util.promisify(fs.writeFile);
 
@@ -33,14 +34,16 @@ const sort = (a, b) => {
 };
 
 const download = (url) => new Promise((resolve, reject) => {
+  const decoder = new StringDecoder('utf8');
   let data = '';
 
   https.get(url, (resp) => {
     resp.on('data', (chunk) => {
-      data += chunk;
+      data += decoder.write(chunk);
     });
 
     resp.on('end', () => {
+      data += decoder.end();
       resolve(data);
     });
   })

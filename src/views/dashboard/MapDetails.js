@@ -64,11 +64,12 @@ const fullScreenClick = (mapState, setMapState) => {
 };
 
 const MapDetails = ({ className, ...rest }) => {
+  const selectedIndex = 1;
   const classes = useStyles();
   const contentClasses = useContentStyles();
   const [dateValue, setDateValue] = useState('');
   const [mapState, setMapState] = useState({
-    type: selectorData[0].key,
+    type: selectorData[selectedIndex].key,
     fullScreen: false
   });
 
@@ -121,6 +122,7 @@ const MapDetails = ({ className, ...rest }) => {
       >
         <Selector
           data={selectorData}
+          selectedIndex={selectedIndex}
           selectionChanged={(type) => { setMapState({ ...mapState, type }); }}
         />
       </Box>
