@@ -53,11 +53,10 @@ const download = (url) => new Promise((resolve, reject) => {
     });
 });
 
-const arrangeByDate = (data, store) => data.data.reduce((acc, curr) => {
-  const currentYear = new Date().getFullYear();
+const arrangeByDate = (data, store, year) => data.data.reduce((acc, curr) => {
   const date = curr.Date;
 
-  const parsedDate = /^[0-9]{2}-[a-z,A-Z]{3}$/.test(date) ? `${date}-${currentYear}` : curr.Date;
+  const parsedDate = /^[0-9]{2}-[a-z,A-Z]{3}$/.test(date) ? `${date}-${year}` : curr.Date;
   curr.Date = parsedDate;
 
   const entry = acc.has(parsedDate) ? acc.get(parsedDate) : new Map();
@@ -69,10 +68,16 @@ const arrangeByDate = (data, store) => data.data.reduce((acc, curr) => {
 
 const mergeTests = async (testUrl, baseTestsUrl) => {
   const tests = await download(testUrl);
-  const baseTests = await download(baseTestsUrl);
+  const baseTests = await download(baseTestsUrl).then(JSON.parse);
 
-  const store = arrangeByDate(JSON.parse(baseTests), new Map());
-  arrangeByDate(JSON.parse(tests), store);
+  const due = new Date('18-Dec-2021');
+  baseTests.data = baseTests.data.filter((item) => {
+    const date = new Date(item.Date);
+    return date < due;
+  });
+
+  const store = arrangeByDate(baseTests, new Map(), 2020);
+  arrangeByDate(JSON.parse(tests), store, 2020);
 
   const maps = [...store.values()]
     .map((item) => [...item.values()])
@@ -90,8 +95,14 @@ const mergeCases = async (casesUrl, baseCasesUrl, activeCasesUrl) => {
   const baseCases = await download(baseCasesUrl).then(JSON.parse);
   const activeCases = await download(activeCasesUrl).then(JSON.parse);
 
-  const caseStore = arrangeByDate(cases, new Map());
-  const mergedCases = arrangeByDate(baseCases, caseStore);
+  const due = new Date('18-Dec-2021');
+  baseCases.data = baseCases.data.filter((item) => {
+    const date = new Date(item.Date);
+    return date < due;
+  });
+
+  const caseStore = arrangeByDate(cases, new Map(), 2020);
+  const mergedCases = arrangeByDate(baseCases, caseStore, 2020);
 
   activeCases.data.forEach((activeCase) => {
     Object.keys(activeCase).forEach((activeCaseKey) => {
