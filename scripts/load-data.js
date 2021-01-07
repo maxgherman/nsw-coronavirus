@@ -26,6 +26,13 @@ const daysMap = [...new Array(14).keys()]
     return acc;
   }, new Map());
 
+const currentYear = new Date().getFullYear();
+const decemberDays = [24, 25, 26, 27, 28, 29, 30, 31]
+  .map((item) => `${item}-Dec`);
+
+const januaryDays = ['01', '02', '03', '04', '05', '06']
+  .map((item) => `${item}-Jan`);
+
 const sort = (a, b) => {
   const aDate = new Date(a.Date);
   const bDate = new Date(b.Date);
@@ -56,7 +63,9 @@ const download = (url) => new Promise((resolve, reject) => {
 const arrangeByDate = (data, store, year) => data.data.reduce((acc, curr) => {
   const date = curr.Date;
 
-  const parsedDate = /^[0-9]{2}-[a-z,A-Z]{3}$/.test(date) ? `${date}-${year}` : curr.Date;
+  const parsedDate = /^[0-9]{2}-[a-z,A-Z]{3}-[0-9]{4}$/.test(date) ? date
+    : /^[0-9]{2}-[a-z,A-Z]{3}$/.test(date) ? `${date}-${year}` : date;
+
   curr.Date = parsedDate;
 
   const entry = acc.has(parsedDate) ? acc.get(parsedDate) : new Map();
@@ -67,17 +76,16 @@ const arrangeByDate = (data, store, year) => data.data.reduce((acc, curr) => {
 }, store);
 
 const mergeTests = async (testUrl, baseTestsUrl) => {
-  const tests = await download(testUrl);
+  const tests = await download(testUrl).then(JSON.parse);
   const baseTests = await download(baseTestsUrl).then(JSON.parse);
 
-  const due = new Date('18-Dec-2021');
-  baseTests.data = baseTests.data.filter((item) => {
-    const date = new Date(item.Date);
-    return date < due;
-  });
+  baseTests.data = baseTests.data
+    .filter((item) => !januaryDays.includes(item.Date.substring(0, 6)));
 
-  const store = arrangeByDate(baseTests, new Map(), 2020);
-  arrangeByDate(JSON.parse(tests), store, 2020);
+  tests.data = tests.data.filter((item) => !decemberDays.includes(item.Date));
+
+  const store = arrangeByDate(baseTests, new Map(), currentYear);
+  arrangeByDate(tests, store, currentYear);
 
   const maps = [...store.values()]
     .map((item) => [...item.values()])
@@ -95,14 +103,13 @@ const mergeCases = async (casesUrl, baseCasesUrl, activeCasesUrl) => {
   const baseCases = await download(baseCasesUrl).then(JSON.parse);
   const activeCases = await download(activeCasesUrl).then(JSON.parse);
 
-  const due = new Date('18-Dec-2021');
-  baseCases.data = baseCases.data.filter((item) => {
-    const date = new Date(item.Date);
-    return date < due;
-  });
+  baseCases.data = baseCases.data
+    .filter((item) => !januaryDays.includes(item.Date.substring(0, 6)));
 
-  const caseStore = arrangeByDate(cases, new Map(), 2020);
-  const mergedCases = arrangeByDate(baseCases, caseStore, 2020);
+  cases.data = cases.data.filter((item) => !decemberDays.includes(item.Date));
+
+  const caseStore = arrangeByDate(cases, new Map(), currentYear);
+  const mergedCases = arrangeByDate(baseCases, caseStore, currentYear);
 
   activeCases.data.forEach((activeCase) => {
     Object.keys(activeCase).forEach((activeCaseKey) => {
