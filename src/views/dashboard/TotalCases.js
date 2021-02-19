@@ -50,7 +50,7 @@ const TotalCases = ({ className, ...rest }) => {
 
     const progress = lastDateData >= secondLastDateData ? 1 : -1;
     const diff = Math.abs(lastDateData - secondLastDateData);
-    const percent = (progress * diff * 100) / secondLastDateData;
+    const percent = secondLastDateData === 0 ? 0 : (progress * diff * 100) / secondLastDateData;
 
     return {
       totalCases: lastDateData, progressCases: percent
