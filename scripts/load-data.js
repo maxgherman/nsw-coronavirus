@@ -82,8 +82,6 @@ const mergeTests = async (testUrl, baseTestsUrl) => {
   baseTests.data = baseTests.data
     .filter((item) => !januaryDays.includes(item.Date.substring(0, 6)));
 
-  baseTests.data.splice(330267);
-
   tests.data = tests.data.filter((item) => !decemberDays.includes(item.Date));
 
   const store = arrangeByDate(baseTests, new Map(), currentYear);
