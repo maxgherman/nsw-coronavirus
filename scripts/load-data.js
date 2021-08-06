@@ -82,6 +82,8 @@ const mergeTests = async (testUrl, baseTestsUrl) => {
   baseTests.data = baseTests.data
     .filter((item) => !januaryDays.includes(item.Date.substring(0, 6)));
 
+  baseTests.data.splice(330267);
+
   tests.data = tests.data.filter((item) => !decemberDays.includes(item.Date));
 
   const store = arrangeByDate(baseTests, new Map(), currentYear);
@@ -176,7 +178,7 @@ const run = async (baseDir) => {
     JSON.stringify(resultTests)
   );
 
-  console.log('complete writing tests');
+  console.log('complete writing tests ', resultTests.data[resultTests.data.length - 1].Date);
 
   process.exit();
 };
