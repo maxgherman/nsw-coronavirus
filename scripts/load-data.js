@@ -164,6 +164,8 @@ const run = async (baseDir) => {
     JSON.stringify(cases)
   );
 
+  console.log('complete writing case: ', cases.data[cases.data.length - 1].Date);
+
   const resultTests = await mergeTests(
     `${baseDataURL}/data_tests.json`,
     `${baseDataStoreURL}/tests-total.json`,
