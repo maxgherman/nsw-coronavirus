@@ -27,11 +27,6 @@ const daysMap = [...new Array(14).keys()]
   }, new Map());
 
 const currentYear = new Date().getFullYear();
-const decemberDays = [24, 25, 26, 27, 28, 29, 30, 31]
-  .map((item) => `${item}-Dec`);
-
-const januaryDays = ['01', '02', '03', '04', '05', '06']
-  .map((item) => `${item}-Jan`);
 
 const sort = (a, b) => {
   const aDate = new Date(a.Date);
@@ -60,17 +55,22 @@ const download = (url) => new Promise((resolve, reject) => {
     });
 });
 
-const arrangeByDate = (data, store, year) => data.data.reduce((acc, curr) => {
+const arrangeByDate = (data, store, year, hasCrossYear) => data.data.reduce((acc, curr) => {
   const date = curr.Date;
 
-  const parsedDate = /^[0-9]{2}-[a-z,A-Z]{3}-[0-9]{4}$/.test(date) ? date
-    : /^[0-9]{2}-[a-z,A-Z]{3}$/.test(date) ? `${date}-${year}` : date;
+  if (/^[0-9]{2}-[a-z,A-Z]{3}-[0-9]{4}$/.test(date)) {
+    curr.Date = date;
+  } else if (/^[0-9]{2}-[a-z,A-Z]{3}$/.test(date)) {
+    if (hasCrossYear) {
+      curr.Date = date.includes('Jan') ? `${date}-${year}` : `${date}-${year - 1}`;
+    } else {
+      curr.Date = `${date}-${year}`;
+    }
+  }
 
-  curr.Date = parsedDate;
-
-  const entry = acc.has(parsedDate) ? acc.get(parsedDate) : new Map();
+  const entry = acc.has(curr.Date) ? acc.get(curr.Date) : new Map();
   entry.set(curr.POA_NAME16, curr);
-  acc.set(parsedDate, entry);
+  acc.set(curr.Date, entry);
 
   return acc;
 }, store);
@@ -80,12 +80,16 @@ const mergeTests = async (testUrl, baseTestsUrl) => {
   const baseTests = await download(baseTestsUrl).then(JSON.parse);
 
   baseTests.data = baseTests.data
-    .filter((item) => !januaryDays.includes(item.Date.substring(0, 6)));
+    .filter((item) => {
+      return item.Date.substring(3) !== 'Dec-2022';
+    });
 
-  tests.data = tests.data.filter((item) => !decemberDays.includes(item.Date));
+  const hasJanuary = tests.data.filter((item) => item.Date.substring(3) === 'Jan').length > 0;
+  const hasDecember = tests.data.filter((item) => item.Date.substring(3) === 'Dec').length > 0;
+  const hasCrossYear = hasJanuary && hasDecember;
 
-  const store = arrangeByDate(baseTests, new Map(), currentYear);
-  arrangeByDate(tests, store, currentYear);
+  const store = arrangeByDate(baseTests, new Map(), currentYear, false);
+  arrangeByDate(tests, store, currentYear, hasCrossYear);
 
   const maps = [...store.values()]
     .map((item) => [...item.values()])
@@ -104,12 +108,16 @@ const mergeCases = async (casesUrl, baseCasesUrl, activeCasesUrl) => {
   const activeCases = await download(activeCasesUrl).then(JSON.parse);
 
   baseCases.data = baseCases.data
-    .filter((item) => !januaryDays.includes(item.Date.substring(0, 6)));
+    .filter((item) => {
+      return item.Date.substring(3) !== 'Dec-2022';
+    });
 
-  cases.data = cases.data.filter((item) => !decemberDays.includes(item.Date));
+  const hasJanuary = cases.data.filter((item) => item.Date.substring(3) === 'Jan').length > 0;
+  const hasDecember = cases.data.filter((item) => item.Date.substring(3) === 'Dec').length > 0;
+  const hasCrossYear = hasJanuary && hasDecember;
 
-  const caseStore = arrangeByDate(cases, new Map(), currentYear);
-  const mergedCases = arrangeByDate(baseCases, caseStore, currentYear);
+  const caseStore = arrangeByDate(cases, new Map(), currentYear, hasCrossYear);
+  const mergedCases = arrangeByDate(baseCases, caseStore, currentYear, false);
 
   activeCases.data.forEach((activeCase) => {
     Object.keys(activeCase).forEach((activeCaseKey) => {
